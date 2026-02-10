@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PF2e 日本語ステーション — GM学習 & キャラクリ</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>PF2e 日本語ステーション</h1>
+			<p class="subtitle">
+				Pathfinder 2e Remaster — GM学習 & キャラクタークリエイター (登録データ:
+				<span id="dataCount">0</span>件)
+			</p>
+		</header>
+
+		<nav id="main-tabs">
+			<button class="tab-btn active" data-tab="gm">GM学習モード</button>
+			<button class="tab-btn" data-tab="cc">キャラクタークリエイター</button>
+			<button class="tab-btn" data-tab="ref">クイックリファレンス</button>
+			<button class="tab-btn" data-tab="settings">設定</button>
+		</nav>
+
+		<!-- ==================== GM学習モード ==================== -->
+		<section id="tab-gm" class="tab-content active">
+			<div class="gm-layout">
+				<div id="gm-topics">
+					<h3>トピック選択</h3>
+				</div>
+				<div class="gm-chat">
+					<div id="chatLog"></div>
+					<div class="chat-input-area">
+						<textarea
+							id="chatInput"
+							placeholder="PF2eについて日本語で質問..."
+							rows="2"
+						></textarea>
+						<button id="chatSend">送信</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ==================== キャラクタークリエイター ==================== -->
+		<section id="tab-cc" class="tab-content">
+			<div class="cc-layout">
+				<aside class="cc-steps">
+					<h3>ステップ</h3>
+					<div id="step-nav"></div>
+					<div class="nav-buttons">
+						<button id="btnPrev">前へ</button>
+						<button id="btnNext">次へ</button>
+					</div>
+				</aside>
+				<main class="cc-main">
+					<div id="step-content"></div>
+				</main>
+				<aside class="cc-sheet">
+					<h3>キャラクターシート</h3>
+					<div id="char-sheet">まだデータがありません</div>
+					<div class="sheet-actions">
+						<button id="btnExport">JSON出力</button>
+						<button id="btnGenImage">画像生成</button>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<!-- ==================== クイックリファレンス ==================== -->
+		<section id="tab-ref" class="tab-content">
+			<h3>クイックリファレンス</h3>
+			<input type="text" id="refSearch" placeholder="ルールや用語を検索..." />
+			<div id="ref-content"></div>
+		</section>
+
+		<!-- ==================== 設定 ==================== -->
+		<section id="tab-settings" class="tab-content">
+			<div class="settings-panel">
+				<h3>AIチャット設定</h3>
+				<p>
+					AIチャット機能を使うには、以下のいずれかからAPIキーを取得して入力してください。
+				</p>
+				<div class="setting-row">
+					<label>AIプロバイダ:</label>
+					<select id="ai-provider">
+						<option value="openai">OpenAI (GPT)</option>
+						<option value="anthropic">Anthropic (Claude)</option>
+						<option value="google">Google (Gemini)</option>
+					</select>
+				</div>
+				<div class="setting-row">
+					<label>APIキー:</label>
+					<input
+						type="password"
+						id="api-key"
+						placeholder="sk-... / sk-ant-... / AI..."
+					/>
+					<button id="btnToggleKey">表示</button>
+				</div>
+				<div class="setting-row">
+					<label>モデル:</label>
+					<input type="text" id="ai-model" placeholder="gpt-4o-mini" />
+				</div>
+				<button id="btnSaveSettings">設定を保存</button>
+				<p id="settingsStatus"></p>
+				<h4>APIキー取得先リンク</h4>
+				<ul class="api-links">
+					<li>
+						<a
+							href="https://platform.openai.com/api-keys"
+							target="_blank"
+							rel="noopener"
+							>OpenAI APIキー</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://console.anthropic.com/settings/keys"
+							target="_blank"
+							rel="noopener"
+							>Anthropic (Claude) APIキー</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://aistudio.google.com/apikey"
+							target="_blank"
+							rel="noopener"
+							>Google (Gemini) APIキー</a
+						>
+					</li>
+				</ul>
+				<h3>画像生成</h3>
+				<p>
+					Puter.js経由で無料生成（初回のみアカウント作成ポップアップあり）。設定不要です。
+				</p>
+			</div>
+		</section>
+
+		<footer>
+			<p>
+				Pathfinder 2e は Paizo Inc.
+				の登録商標です。本サイトはORCライセンス準拠のオープンコンテンツを使用しています。
+			</p>
+		</footer>
+
+		<script src="./data.js"></script>
+		<script src="./app.js"></script>
+	</body>
+</html>
